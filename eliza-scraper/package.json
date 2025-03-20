@@ -1,0 +1,74 @@
+{
+  "name": "@agixbt/elizascraper",
+  "version": "1.0.1",
+  "description": "Awesome Scraper for eliza, scrape docs, tweets, and tokens",
+  "type": "module",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
+  "bin": {
+    "elizascraper": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "bun run --watch src/server.ts",
+    "build": "bun build ./src/server.ts ./src/cli.ts --outdir ./dist --target node --external pg --external @qdrant/js-client-rest --external playwright --external apify-client --format esm",
+    "postbuild": "tsc --declaration --emitDeclarationOnly --declarationDir dist",
+    "cli": "bun run src/cli.ts",
+    "prepublishOnly": "bun run build"
+  },
+  "dependencies": {
+    "@agixbt/elizascraper": "^1.0.1",
+    "@elysiajs/cors": "^1.2.0",
+    "@elysiajs/cron": "^1.2.0",
+    "@elysiajs/swagger": "^1.2.0",
+    "@qdrant/js-client-rest": "^1.13.0",
+    "apify-client": "^2.11.1",
+    "cheerio": "^1.0.0",
+    "commander": "^13.1.0",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.40.0",
+    "elysia": "latest",
+    "openai": "^4.86.1",
+    "pg": "^8.13.3",
+    "playwright": "^1.50.1",
+    "v": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.11",
+    "bun-types": "latest",
+    "typescript": "^5.3.3"
+  },
+  "module": "dist/server.js",
+  "exports": {
+    ".": {
+      "import": "./dist/server.js",
+      "types": "./dist/server.d.ts"
+    },
+    "./site": {
+      "import": "./dist/lib/scraper.js",
+      "types": "./dist/lib/scraper.d.ts"
+    },
+    "./token": {
+      "import": "./dist/lib/coingecko.js",
+      "types": "./dist/lib/coingecko.d.ts"
+    },
+    "./embeddings": {
+      "import": "./dist/lib/embeddings.js",
+      "types": "./dist/lib/embeddings.d.ts"
+    },
+    "./tweets": {
+      "import": "./dist/lib/tweets.js",
+      "types": "./dist/lib/tweets.d.ts"
+    }
+  },
+  "keywords": [
+    "blockchain",
+    "scraper",
+    "bera",
+    "cli",
+    "api"
+  ]
+}

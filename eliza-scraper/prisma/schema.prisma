@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model TokenData {
+  dbId                         Int       @id @default(autoincrement()) @map("db_id")
+  id                           String    @unique
+  symbol                       String
+  name                         String
+  image                        String
+  currentPrice                 Decimal?  @map("current_price") @db.Decimal(18, 8)
+  marketCap                    Decimal?  @map("market_cap") @db.Decimal(36, 2)
+  marketCapRank                Decimal?  @map("market_cap_rank")
+  fullyDilutedValuation        Decimal?  @map("fully_diluted_valuation") @db.Decimal(36, 2)
+  totalVolume                  Decimal?  @map("total_volume") @db.Decimal(36, 2)
+  high24h                      Decimal?  @map("high_24h") @db.Decimal(18, 8)
+  low24h                       Decimal?  @map("low_24h") @db.Decimal(18, 8)
+  priceChange24h               Decimal?  @map("price_change_24h") @db.Decimal(18, 8)
+  priceChangePercentage24h     Decimal?  @map("price_change_percentage_24h") @db.Decimal(10, 2)
+  marketCapChange24h           Decimal?  @map("market_cap_change_24h") @db.Decimal(36, 2)
+  marketCapChangePercentage24h Decimal?  @map("market_cap_change_percentage_24h") @db.Decimal(10, 2)
+  circulatingSupply            Decimal?  @map("circulating_supply") @db.Decimal(36, 8)
+  totalSupply                  Decimal?  @map("total_supply") @db.Decimal(36, 8)
+  maxSupply                    Decimal?  @map("max_supply") @db.Decimal(36, 8)
+  ath                          Decimal?  @db.Decimal(18, 8)
+  athChangePercentage          Decimal?  @map("ath_change_percentage") @db.Decimal(10, 2)
+  athDate                      DateTime? @map("ath_date")
+  atl                          Decimal?  @db.Decimal(18, 8)
+  atlChangePercentage          Decimal?  @map("atl_change_percentage") @db.Decimal(10, 2)
+  atlDate                      DateTime? @map("atl_date")
+  roi                          Json?
+  lastUpdated                  DateTime  @map("last_updated")
+
+  @@map("token_data")
+}

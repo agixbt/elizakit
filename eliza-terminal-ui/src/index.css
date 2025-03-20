@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import KaTeX styles */
+@import 'katex/dist/katex.min.css';
+
+.markdown-content {
+  @apply text-green-500;
+}
+
+.markdown-content p {
+  @apply inline;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  @apply text-green-400 font-bold mt-4 mb-2 block;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply block ml-4 my-2;
+}
+
+.markdown-content li {
+  @apply list-disc ml-4;
+}
+
+.markdown-content table {
+  @apply border-collapse my-2;
+}
+
+.markdown-content th,
+.markdown-content td {
+  @apply border border-green-700 px-2 py-1;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-green-700 pl-4 my-2 italic;
+}
+
+.markdown-content a {
+  @apply text-blue-400 hover:underline;
+}
+
+.markdown-content hr {
+  @apply border-green-700 my-4;
+}
+
+* {
+  background: #000;
+  scrollbar-color: #000;
+}
